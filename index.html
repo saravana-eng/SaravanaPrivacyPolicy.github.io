@@ -1,184 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Product Name</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Self Ordering Kiosk System</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            color: #333;
-            line-height: 1.6;
-        }
+<style>
+:root {
+  --primary:#0d6efd;
+}
 
-        /* Navigation */
-        nav {
-            background: #0f172a;
-            padding: 12px 20px;
-            position: sticky;
-            top: 0;
-        }
+* {
+  box-sizing:border-box;
+  font-family:"Segoe UI",sans-serif;
+}
 
-        nav a {
-            color: white;
-            margin-right: 20px;
-            text-decoration: none;
-            font-weight: bold;
-        }
+body {
+  margin:0;
+  color:#333;
+}
 
-        nav a:hover {
-            text-decoration: underline;
-        }
+header {
+  position:sticky;
+  top:0;
+  background:#fff;
+  padding:14px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
 
-        /* Sections */
-        section {
-            padding: 60px 20px;
-            max-width: 1000px;
-            margin: auto;
-        }
+header h1 {
+  margin:0;
+  color:var(--primary);
+}
 
-        /* Hero */
-        #hero {
-            text-align: center;
-            background: #f1f5f9;
-        }
+header nav a {
+  margin-left:20px;
+  text-decoration:none;
+  color:#333;
+  font-weight:500;
+}
 
-        #hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
+/* HERO */
+.hero {
+  background:linear-gradient(135deg,#0d6efd,#0a58ca);
+  color:white;
+  padding:80px 20px;
+}
 
-        #hero p {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-        }
+.hero-content {
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+}
 
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background: #2563eb;
-            color: white;
-            border-radius: 6px;
-            text-decoration: none;
-        }
+.hero h2 {
+  font-size:42px;
+  margin-bottom:15px;
+}
 
-        .btn:hover {
-            background: #1d4ed8;
-        }
+.hero p {
+  font-size:18px;
+}
 
-        /* Features */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
+.hero button {
+  margin-top:25px;
+  padding:15px 30px;
+  font-size:18px;
+  border:none;
+  border-radius:10px;
+  background:white;
+  color:var(--primary);
+  font-weight:600;
+  cursor:pointer;
+}
 
-        .feature-box {
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 8px;
-            background: white;
-        }
+.hero img {
+  width:100%;
+  max-height:420px;
+  object-fit:contain;
+  border-radius:20px;
+  background:white;
+  padding:20px;
+}
 
-        /* Footer */
-        footer {
-            background: #0f172a;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-    </style>
+/* SECTIONS */
+section {
+  padding:80px 20px;
+  max-width:1200px;
+  margin:auto;
+}
+
+section h3 {
+  text-align:center;
+  font-size:32px;
+  margin-bottom:50px;
+}
+
+.features {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+
+.card {
+  padding:25px;
+  border-radius:16px;
+  background:#f9f9f9;
+  box-shadow:0 8px 25px rgba(0,0,0,.05);
+}
+
+.card h4 {
+  color:var(--primary);
+}
+
+.usecases {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:25px;
+  text-align:center;
+}
+
+.usecases div {
+  background:#f1f1f1;
+  padding:20px;
+  border-radius:14px;
+  font-weight:600;
+}
+
+.policy {
+  background:#f8f9fa;
+  border-radius:16px;
+  padding:40px;
+  line-height:1.7;
+}
+
+.cta {
+  background:#111;
+  color:white;
+  text-align:center;
+  padding:80px 20px;
+}
+
+.cta button {
+  margin-top:20px;
+  padding:16px 34px;
+  font-size:18px;
+  border:none;
+  border-radius:10px;
+  background:var(--primary);
+  color:white;
+  cursor:pointer;
+}
+
+footer {
+  background:#111;
+  color:#aaa;
+  text-align:center;
+  padding:20px;
+}
+
+/* MOBILE */
+@media(max-width:768px) {
+  .hero-content {
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+}
+</style>
 </head>
+
 <body>
 
-<!-- Navigation -->
-<nav>
-    <a href="#hero">Home</a>
+<header>
+  <h1>Smart Kiosk</h1>
+  <nav>
     <a href="#features">Features</a>
-    <a href="#about">About</a>
-    <a href="#privacy">Privacy Policy</a>
+    <a href="#usecases">Use Cases</a>
+    <a href="#privacy">Privacy</a>
     <a href="#contact">Contact</a>
-</nav>
+  </nav>
+</header>
 
-<!-- Hero Section -->
-<section id="hero">
-    <h1>Product Name</h1>
-    <p>A simple, reliable solution for your business needs</p>
-    <a href="#contact" class="btn">Get Started</a>
-</section>
-
-<!-- Features Section -->
-<section id="features">
-    <h2>Key Features</h2>
-    <div class="features">
-        <div class="feature-box">
-            <h3>Easy to Use</h3>
-            <p>Simple interface designed for quick adoption.</p>
-        </div>
-        <div class="feature-box">
-            <h3>Secure</h3>
-            <p>Built with security and data protection in mind.</p>
-        </div>
-        <div class="feature-box">
-            <h3>Scalable</h3>
-            <p>Grows with your business effortlessly.</p>
-        </div>
+<section class="hero">
+  <div class="hero-content">
+    <div>
+      <h2>Self-Ordering Kiosk for Faster Business</h2>
+      <p>
+        Modern touch-screen kiosk system for restaurants, temples,
+        food courts and retail outlets.
+      </p>
+      <button>Request Demo</button>
     </div>
+
+    <!-- PRODUCT IMAGE -->
+    <img src="kiosk.png" alt="Self Ordering Kiosk">
+  </div>
 </section>
 
-<!-- About Section -->
-<section id="about">
-    <h2>About the Product</h2>
-    <p>
-        Our product is designed to help businesses automate operations,
-        improve efficiency, and deliver a seamless user experience.
-    </p>
+<section id="features">
+  <h3>Key Features</h3>
+  <div class="features">
+    <div class="card">
+      <h4>Touch-Friendly UI</h4>
+      <p>Optimized for kiosks with large buttons and fast response.</p>
+    </div>
+    <div class="card">
+      <h4>UPI & Card Payments</h4>
+      <p>Supports QR, UPI, cards and wallet payments.</p>
+    </div>
+    <div class="card">
+      <h4>Order Automation</h4>
+      <p>Instant order processing and reduced queue time.</p>
+    </div>
+    <div class="card">
+      <h4>Custom Branding</h4>
+      <p>Brand colors, logo and workflow customization.</p>
+    </div>
+  </div>
 </section>
 
-<!-- Privacy Policy Section -->
+<section id="usecases">
+  <h3>Where It Works</h3>
+  <div class="usecases">
+    <div>Restaurants</div>
+    <div>Temples</div>
+    <div>Food Courts</div>
+    <div>Retail Stores</div>
+    <div>Hospitals</div>
+    <div>Ticketing</div>
+  </div>
+</section>
+
 <section id="privacy">
-    <h2>Privacy Policy</h2>
+  <h3>Privacy Policy</h3>
+  <div class="policy">
+    <h2>Terms & Conditions</h2>
     <p>
-        We value your privacy. This Privacy Policy explains how we collect,
-        use, and protect your information.
-    </p>
+        Last updated on Dec 14th 2025
 
-    <h3>Information We Collect</h3>
-    <p>
-        We may collect basic information such as name, email, and usage data
-        to improve our services.
+        For the purpose of these Terms and Conditions, The term "we", "us", "our" used anywhere on this page shall mean K SARAVANA, whose registered/operational office is Annai velankanni ngr saravanampatty Coimbatore TAMIL NADU 641035 . "you", “your”, "user", “visitor” shall mean any natural or legal person who is visiting our website and/or agreed to purchase from us.
     </p>
+    <p>
+       <strong>Your use of the website and/or purchase from us are governed by following Terms and Conditions: </strong> 
 
-    <h3>How We Use Information</h3>
-    <p>
-        Information is used only to provide and improve our products and
-        services. We do not sell your data.
-    </p>
+        <li>The content of the pages of this website is subject to change without notice.</li> 
 
-    <h3>Data Security</h3>
-    <p>
-        We implement appropriate security measures to protect your data.
-    </p>
+        <li> Neither we nor any third parties provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law.</li>
 
-    <h3>Contact</h3>
-    <p>
-        If you have questions about this Privacy Policy, contact us at
-        support@example.com.
+         <li>Your use of any information or materials on our website and/or product pages is entirely at your own risk, for which we shall not be liable. It shall be your own responsibility to ensure that any products, services or information available through our website and/or product pages meet your specific requirements.</li>
+
+         <li>Our website contains material which is owned by or licensed to us. This material includes, but are not limited to, the design, layout, look, appearance and graphics. Reproduction is prohibited other than in accordance with the copyright notice, which forms part of these terms and conditions.</li>
+
+         <li>All trademarks reproduced in our website which are not the property of, or licensed to, the operator are acknowledged on the website.</li>
+
+         <li>Unauthorized use of information provided by us shall give rise to a claim for damages and/or be a criminal offense.</li>
+
+         <li>From time to time our website may also include links to other websites. These links are provided for your convenience to provide further information.</li>
+
+         <li>You may not create a link to our website from another website or document without K SARAVANA’s prior written consent.</li>
+
+         <li>Any dispute arising out of use of our website and/or purchase with us and/or any engagement with us is subject to the laws of India .</li>
+
+         <li>We, shall be under no liability whatsoever in respect of any loss or damage arising directly or indirectly out of the decline of authorization for any Transaction, on Account of the Cardholder having exceeded the preset limit mutually agreed by us with our acquiring bank from time to time</li>
     </p>
+    <h2>Cancellation & Refund Policy</h2>
+    <p>
+      No cancellations & Refunds are entertained
+    </p>
+    <h2>Shipping & Delivery Policy</h2>
+    <p>
+      Shipping is not applicable for business.
+    </p>
+    <p>
+      Contact: <strong>saravana.rae@gmail.com</strong> Ph: <strong>+91 7871979114</strong>
+    </p>
+  </div>
 </section>
 
-<!-- Contact Section -->
-<section id="contact">
-    <h2>Contact Us</h2>
-    <p>Email: support@example.com</p>
-    <p>Phone: +91-XXXXXXXXXX</p>
+<section id="contact" class="cta">
+  <h3>Contact us</h3>
+  <h2>Mail: Saravana.rae@gmail.com</h2>
+  <h2>Phone: +91 7871979114</h2>
+
 </section>
 
-<!-- Footer -->
 <footer>
-    <p>© 2025 Product Name. All rights reserved.</p>
+  © 2025 Smart Kiosk System. All rights reserved.
 </footer>
 
 </body>
